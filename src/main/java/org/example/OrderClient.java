@@ -16,5 +16,12 @@ public class OrderClient extends Client {
                 .then();
     }
 
-   // public ValidatableResponse
+   public ValidatableResponse getOrder(String accessToken){
+       return given().log().all()
+               .spec(getSpec())
+               .header("Authorization", accessToken)
+               .when()
+               .get("/api/orders")
+               .then();
+   }
 }
