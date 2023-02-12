@@ -33,4 +33,23 @@ public class UserClient extends Client {
                 .delete("/api/auth/user")
                 .then();
     }
+
+    public ValidatableResponse changeData(UserData userData, String accessToken){
+        return given().log().all()
+                .spec(getSpec())
+                .header("Authorization", accessToken)
+                .body(userData)
+                .when()
+                .patch("/api/auth/user")
+                .then();
+    }
+
+    public ValidatableResponse getOrderData(String accessToken){
+        return given().log().all()
+                .spec(getSpec())
+                .header("Authorization", accessToken)
+                .when()
+                .get("/api/auth/user")
+                .then();
+    }
 }
