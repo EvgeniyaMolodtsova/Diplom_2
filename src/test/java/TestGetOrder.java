@@ -1,3 +1,4 @@
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
 import org.example.*;
 import org.junit.After;
@@ -30,6 +31,7 @@ public class TestGetOrder {
     }
 
     @Test
+    @DisplayName("поллучение заказа")
     public void getOrder(){
         ValidatableResponse getOrder = orderClient.getOrder(token);
 
@@ -37,6 +39,7 @@ public class TestGetOrder {
     }
 
     @Test
+    @DisplayName("проверка, что в заказе те же ингредиенты, которые передали")
     public void checkGetIngredients(){
         ValidatableResponse getOrder = orderClient.getOrder(token);
 
@@ -46,6 +49,7 @@ public class TestGetOrder {
     }
 
     @Test
+    @DisplayName("проверка, что в структуре есть статус")
     public void checkStatus(){
         ValidatableResponse getOrder = orderClient.getOrder(token);
 
@@ -53,6 +57,7 @@ public class TestGetOrder {
     }
 
     @Test
+    @DisplayName("проверка, что в структуре есть ID")
     public void checkID(){
         ValidatableResponse getOrder = orderClient.getOrder(token);
 
@@ -60,6 +65,7 @@ public class TestGetOrder {
     }
 
     @Test
+    @DisplayName("проверка, что в структуре есть номер заказа")
     public void checkNumber(){
         ValidatableResponse getOrder = orderClient.getOrder(token);
 
@@ -67,6 +73,7 @@ public class TestGetOrder {
     }
 
     @Test
+    @DisplayName("проверка, что в структуре есть дата заказа")
     public void checkDate(){
         ValidatableResponse getOrder = orderClient.getOrder(token);
 
@@ -75,6 +82,7 @@ public class TestGetOrder {
     }
 
     @Test
+    @DisplayName("проверка, что неавторизованный пользователь не может получить заказ")
     public void getOrderWithOutAuthorization(){
         ValidatableResponse getOrder = orderClient.getOrder("");
 
