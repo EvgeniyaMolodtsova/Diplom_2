@@ -1,9 +1,6 @@
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
-import org.example.User;
-import org.example.UserClient;
-import org.example.UserGeneration;
-import org.example.UserLogin;
+import org.example.*;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -16,7 +13,8 @@ public class TestUserLogin {
     private User user;
 
     @Before
-    public void setUp() {
+    public void setUp() throws InterruptedException {
+        ThreadSleep.run();
         user = userGeneration.getDefault();
         ValidatableResponse createUser = userClient.create(user);
         token = createUser.extract().path("accessToken");

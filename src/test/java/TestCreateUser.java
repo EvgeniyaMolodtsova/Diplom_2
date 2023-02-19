@@ -1,10 +1,12 @@
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
+import org.example.ThreadSleep;
 import org.example.User;
 import org.example.UserClient;
 import org.example.UserGeneration;
 import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 public class TestCreateUser {
@@ -12,6 +14,10 @@ public class TestCreateUser {
     private String token;
     private final UserClient userClient = new UserClient();
 
+    @Before
+    public void waiting() throws InterruptedException {
+        ThreadSleep.run();
+    }
 
     @After
     public void cleanUp(){

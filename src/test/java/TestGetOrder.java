@@ -16,7 +16,8 @@ public class TestGetOrder {
     private final OrderClient orderClient = new OrderClient();
 
     @Before
-    public void setUp() {
+    public void setUp() throws InterruptedException {
+        ThreadSleep.run();
         User user = userGeneration.getDefault();
         ValidatableResponse createUser = userClient.create(user);
         token = createUser.extract().path("accessToken");

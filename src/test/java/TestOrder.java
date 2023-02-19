@@ -3,6 +3,7 @@ import io.restassured.response.ValidatableResponse;
 import org.example.*;
 import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -39,6 +40,11 @@ public class TestOrder {
                 { Burgers.EMPTY_BURGER, true, 400, null },
                 { Burgers.INCORRECT_BURGER, true, 500, null }
         };
+    }
+
+    @Before
+    public void waiting() throws InterruptedException {
+        ThreadSleep.run();
     }
 
     @After
